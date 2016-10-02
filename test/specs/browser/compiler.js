@@ -546,6 +546,16 @@ describe('Compiler Browser', function() {
 
   })
 
+  it('updating a property on a parent does not update it on the child', function() {
+    var tag = riot.mount('nested-child')[0]
+    var childTag = tag.tags['another-nested-child']
+
+    expect(childTag.name).to.equal('child name')
+    tag.update({name: 'hello'})
+    expect(tag.name).to.equal('hello')
+    expect(tag.tags['another-nested-child'].name).to.equal('child name')
+  })
+
   it('the loop children instances get correctly removed in the right order', function() {
 
     var tag = riot.mount('loop-ids')[0],

@@ -25,4 +25,6 @@
 
   <h3>{ opts.title }</h3>
 
+  this.name = 'child name'
+
 </another-nested-child>
